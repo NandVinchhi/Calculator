@@ -1,6 +1,5 @@
 using Gtk
 
-
 win = GtkWindow("Calculator")
 
 b1 = GtkButton("1")
@@ -75,58 +74,134 @@ function calculate(s)
 			final /= parse(Float64, k[i + 1])
 		end
 	end
+    
 	return string(final)
 end
 
+is_equal = 0
 
 function button_clicked_callback(widget)
 	if widget == b1
-		global text = text * "1"
-        GAccessor.text(label, text)
+        if is_equal == 0
+            global text = text * "1"
+            GAccessor.text(label, text)
+        else
+            global text = "1"
+            GAccessor.text(label, text)
+        end
+        global is_equal = 0
     elseif widget == b2
-    	global text = text * "2"
-        GAccessor.text(label, text)
+    	if is_equal == 0
+            global text = text * "2"
+            GAccessor.text(label, text)
+        else
+            global text = "2"
+            GAccessor.text(label, text)
+        end
+        global is_equal = 0
     elseif widget == b3
-        global text = text * "3"
-        GAccessor.text(label, text)
+        if is_equal == 0
+            global text = text * "3"
+            GAccessor.text(label, text)
+        else
+            global text = "3"
+            GAccessor.text(label, text)
+        end
+        global is_equal = 0
     elseif widget == b4
-    	global text = text * "4"
-        GAccessor.text(label, text)
+    	if is_equal == 0
+            global text = text * "4"
+            GAccessor.text(label, text)
+        else
+            global text = "4"
+            GAccessor.text(label, text)
+        end
+        global is_equal = 0
     elseif widget == b5
-        global text = text * "5"
-        GAccessor.text(label, text)
+        if is_equal == 0
+            global text = text * "5"
+            GAccessor.text(label, text)
+        else
+            global text = "5"
+            GAccessor.text(label, text)
+        end
+        global is_equal = 0
     elseif widget == b6
-    	global text = text * "6"
-        GAccessor.text(label, text)
+    	if is_equal == 0
+            global text = text * "6"
+            GAccessor.text(label, text)
+        else
+            global text = "6"
+            GAccessor.text(label, text)
+        end
+        global is_equal = 0
     elseif widget == b7
-        global text = text * "7"
-        GAccessor.text(label, text)
+        if is_equal == 0
+            global text = text * "7"
+            GAccessor.text(label, text)
+        else
+            global text = "7"
+            GAccessor.text(label, text)
+        end
+        global is_equal = 0
     elseif widget == b8
-    	global text = text * "8"
-        GAccessor.text(label, text)
+    	if is_equal == 0
+            global text = text * "8"
+            GAccessor.text(label, text)
+        else
+            global text = "8"
+            GAccessor.text(label, text)
+        end
+        global is_equal = 0
+
     elseif widget == b9
-        global text = text * "9"
-        GAccessor.text(label, text)
+        if is_equal == 0
+            global text = text * "9"
+            GAccessor.text(label, text)
+        else
+            global text = "9"
+            GAccessor.text(label, text)
+        end
+        global is_equal = 0
+
     elseif widget == b_plus
     	global text = text * " + "
         GAccessor.text(label, text)
+        global is_equal = 0
+
     elseif widget == b_minus
         global text = text * " - "
         GAccessor.text(label, text)
+        global is_equal = 0
+
     elseif widget == b_multiply
     	global text = text * " x "
         GAccessor.text(label, text)
+        global is_equal = 0
+
     elseif widget == b_divide
         global text = text * " ÷ "
         GAccessor.text(label, text)
+        global is_equal = 0
+
     elseif widget == b0
-    	global text = text * "0"
-        GAccessor.text(label, text)
+    	if is_equal == 0
+            global text = text * "0"
+            GAccessor.text(label, text)
+        else
+            global text = "0"
+            GAccessor.text(label, text)
+        end
+        global is_equal = 0
+
     elseif widget == b_clear
         global text = ""
         GAccessor.text(label, text)
+        global is_equal = 0
+
     elseif widget == b_equalto
     	global text = calculate(text)
+        global is_equal = 1
         GAccessor.text(label, text)
     end
 end
@@ -148,8 +223,4 @@ id14 = signal_connect(button_clicked_callback, b_divide, "clicked")
 id15 = signal_connect(button_clicked_callback, b_clear, "clicked")
 id16 = signal_connect(button_clicked_callback, b_equalto, "clicked")
 
-
-
 showall(win)
-
-
